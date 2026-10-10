@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#7535ca">
+<meta name="description" content="المعلوماتية 1 – ناشئين: 31 درسًا تفاعليًا لمراجعة مفاهيم نسمو وأمثلة C++ وتجريبها بصريًا باللمس.">
+<title>المعلوماتية 1 – ناشئين | دليل مختبر نسمو التفاعلي</title>
+<style>
+:root{color-scheme:light;--deep:#33164e;--purple:#7136b8;--violet:#9556d6;--light:#f4ecff;--ink:#352647;--muted:#756682;--edge:#e5d7f5;--white:#fff;--mint:#d9faf0}
+[hidden]{display:none!important}*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}body{margin:0;background:linear-gradient(170deg,#fcf9ff 0%,#f9f5ff 55%,#fff 100%);font:15px/1.85 Tahoma,'Segoe UI',Arial,sans-serif;color:var(--ink);overflow-x:hidden}
+button,input{font:inherit}button{cursor:pointer}a{text-decoration:none;color:inherit}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #b486fc;outline-offset:3px}
+.container{width:min(1190px,calc(100% - 34px));margin-inline:auto}
+.topbar{background:rgba(255,255,255,.94);border-bottom:1px solid #eadcf6;position:relative;z-index:5}
+.topbar .inner{display:flex;align-items:center;justify-content:space-between;gap:15px;min-height:77px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0}.monogram{width:49px;height:49px;border-radius:17px;background:linear-gradient(135deg,#a66ce7,#5b219f);color:#fff;display:grid;place-items:center;font-size:27px;font-weight:900;box-shadow:0 11px 18px #5f30a62b;flex-shrink:0}
+.brand-title{display:block;font-weight:900;color:#4b2778;font-size:17px;line-height:1.6}.brand-sub{display:block;color:#82708e;font-size:12px;line-height:1.6}
+.topnav{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.topnav a{font-weight:bold;font-size:12px;padding:9px 12px;border-radius:11px}.topnav a:hover{background:#f3eaff;color:#6d329f}
+.hero{padding:39px 0 28px;display:grid;grid-template-columns:1.06fr .94fr;gap:28px;align-items:center}
+.eyebrow{display:inline-flex;align-items:center;gap:7px;color:#6e319f;background:#f0e4fc;border:1px solid #e5cefb;border-radius:25px;padding:6px 14px;font-weight:900;font-size:12px}
+h1{font-size:clamp(30px,4vw,52px);line-height:1.42;color:#411c68;letter-spacing:-1px;margin:19px 0 12px;font-weight:900}
+h1 em{font-style:normal;color:#8542c6}.lead{font-size:16px;color:#61506e;max-width:600px;margin:0 0 22px;line-height:2}.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
+.primary,.secondary{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:13px;padding:11px 17px;font-weight:900;font-size:13px;min-height:47px}
+.primary{background:linear-gradient(125deg,#8a4dcc,#5f279f);color:white;box-shadow:0 10px 20px #7136b828}.primary:hover{filter:brightness(1.07)}
+.secondary{background:white;border:1px solid #d9c7ee;color:#6f36aa}.secondary:hover{background:#f2eaff}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}.stat{display:flex;align-items:baseline;gap:7px;border:1px solid #ecdef9;border-radius:12px;padding:7px 12px;background:#fff;color:#79678b;font-size:12px}.stat b{font-size:20px;color:#6d30ad;line-height:1.5}
+.hero-visual{background:linear-gradient(145deg,#efe0ff,#fcfaff 65%);min-height:390px;border:1px solid #e7d6ff;border-radius:31px;display:grid;place-items:center;position:relative;overflow:hidden;isolation:isolate}
+.hero-visual::before{content:"";position:absolute;width:330px;height:330px;border-radius:50%;background:#b78ae65c;filter:blur(35px);left:-75px;top:-85px;z-index:-1}
+.visual-caption{position:absolute;right:25px;top:19px;color:#79509d;font-size:11px;font-weight:900;letter-spacing:.15px}
+.plate-stack{transform:perspective(750px) rotateX(9deg) rotateY(-13deg);position:relative;width:min(83%,385px);filter:drop-shadow(0 25px 23px #67409827);direction:ltr}
+.mock-panel{border:1px solid #d6bcf7;border-radius:17px;box-shadow:10px 12px 0 #cdb2ee,16px 19px 0 #e5d7f8;overflow:hidden;background:#fff}
+.mock-toolbar{padding:12px;background:#4d256e;color:#e8d8fa;display:flex;justify-content:space-between;align-items:center;gap:8px;font:12px Consolas,monospace}
+.dots{display:flex;gap:5px}.dots i{width:8px;height:8px;background:#cc9af4;border-radius:50%}.mock-editor{padding:25px 18px 28px;font:clamp(12px,1.5vw,15px)/2 Consolas,'Courier New',monospace;color:#6a3c95;white-space:pre;overflow:hidden}
+.mock-output{position:absolute;bottom:-28px;right:-25px;padding:14px 18px;border-radius:13px;background:#342145;color:#f5eaff;box-shadow:0 15px 23px #35204546;border:1px solid #a474de;font:13px Consolas,monospace;transform:rotate(2deg)}
+.mock-output small{display:block;font:10px Tahoma;color:#c9addf;text-align:right;margin-bottom:4px;direction:rtl}
+section{scroll-margin-top:15px}.section-heading{margin:18px 0 17px}.kicker{color:#8555b6;font-weight:900;font-size:12px}.section-heading h2{color:#482471;font-size:clamp(22px,3vw,29px);margin:1px 0 5px}.section-heading p{color:#776787;margin:0;max-width:790px}
+.method-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.method-card{padding:22px;border:1px solid #e6d9f5;border-radius:21px;background:#fff;box-shadow:0 12px 25px #51307508}
+.method-head{display:flex;gap:12px;align-items:center}.method-icon{display:grid;place-items:center;width:48px;height:48px;border-radius:15px;font-size:23px;color:#7f3ec2;background:#f3e9ff;font-weight:bold}.method-card h3{font-size:19px;color:#4f267a;margin:0}.method-card p{margin:11px 0 0;color:#685874}.method-details{margin-top:13px;background:#f8f2ff;border-radius:12px;padding:10px 12px;font-size:13px;color:#69478b}
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:20px 0 27px}.step{border:1px solid #e8ddf4;border-radius:17px;background:#fff;padding:16px}.step-number{color:#9f6ed6;font:bold 20px Consolas,monospace}.step h3{color:#4a2870;font-size:15px;margin:7px 0 3px}.step p{font-size:12px;color:#776887;margin:0;line-height:1.8}
+.demo-box{border:1px solid #dec9f2;border-radius:23px;background:#fff;box-shadow:0 10px 30px #61408610;padding:22px;margin:25px 0 38px}
+.demo-header{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:15px}.demo-header h3{font-size:18px;margin:0;color:#48226e}.demo-header span{font-size:12px;color:#816e90}
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.demo-pane{background:#f9f5ff;border:1px solid #ebe0f8;border-radius:17px;padding:18px;min-width:0}
+.demo-pane h4{margin:0 0 6px;color:#5b2b8c}.demo-pane p{font-size:12px;color:#766287;margin:0 0 13px}
+.orbs{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;min-height:100px}
+.orb{background:linear-gradient(135deg,#fff,#eadbfa);color:#4d2278;border:1px solid #d4b9f0;border-radius:16px;padding:13px 13px;min-width:95px;box-shadow:4px 7px 0 #c9afe9,6px 11px 13px #5c2d8920;font-weight:900;transform:translateY(0);transition:transform .16s,background .16s}
+.orb[aria-pressed="true"]{transform:translateY(-6px);background:linear-gradient(125deg,#8e4fd0,#6425a7);color:white;box-shadow:5px 13px 0 #d4b5f6,7px 17px 16px #5c2d8930}
+.code-stage{direction:ltr;text-align:left;padding:15px 11px;background:#271c34;border-radius:12px;color:#faf6ff;overflow-x:auto;font:13px/2.15 Consolas,'Courier New',monospace;min-height:100px;white-space:pre}
+.code-token{display:inline-block;border:0;background:none;color:#e7b3ff;padding:0 3px;font:inherit;border-radius:5px;direction:ltr}
+.code-token:hover,.code-token[aria-pressed="true"]{background:#7840b0;color:#fff;outline:1px solid #b083e5}
+.demo-feedback{margin-top:15px;min-height:62px;border:1px solid #d7c4eb;background:#fff;border-radius:12px;padding:12px 13px;color:#5c3b78;font-size:13px;line-height:1.8}
+.demo-feedback strong{display:block;color:#4f267c}
+.note{background:#f5eefc;border-right:4px solid #8b4acd;border-radius:12px;padding:13px 16px;font-size:13px;color:#685476;margin:0 0 32px}
+.catalog-bar{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;margin-bottom:18px}
+.search{width:min(100%,390px);font-size:14px;background:#fff;border:1px solid #d9c7ed;border-radius:13px;padding:12px 16px;color:#432366;outline-offset:2px;direction:rtl}
+.unit-links{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:22px}.unit-links a{border-radius:30px;border:1px solid #dfcfef;background:#fff;padding:6px 11px;font-size:11px;color:#633891;font-weight:bold}.unit-links a:hover{background:#efe3ff}
+.course-section{margin-bottom:34px}.unit-head{display:flex;align-items:center;justify-content:space-between;gap:20px;margin:0 0 14px}.unit-head h3{margin:0;color:#4b2676;font-size:20px}.unit-head p{margin:4px 0;color:#806f8a;font-size:12px}.unit-kicker{font-size:11px;color:#9a5ecc;font-weight:900}.unit-count{background:#efe5ff;border-radius:30px;padding:5px 10px;color:#683f93;font-weight:bold;white-space:nowrap;font-size:11px}
+.lessons-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:13px}.lesson-card{border:1px solid #e8daf6;border-radius:18px;padding:16px;background:#fff;min-height:211px;display:flex;flex-direction:column;transition:box-shadow .15s,transform .15s;min-width:0}.lesson-card:hover{transform:translateY(-3px);box-shadow:0 14px 26px #4f257611}.lesson-num{font-size:11px;color:#9065b6}.lesson-num b{font:900 13px Consolas,monospace;color:#9d71c9;margin-inline:5px}.lesson-card h3{color:#512781;font-size:16px;margin:9px 0 0;line-height:1.65;overflow-wrap:anywhere}.en-name{display:block;color:#9a86ae;font:12px/1.7 Consolas,monospace;text-align:right;unicode-bidi:isolate;margin-top:2px;overflow-wrap:anywhere}.lesson-card p{font-size:12px;color:#766685;margin:8px 0 10px}.lesson-card a{display:inline-flex;align-self:flex-start;gap:7px;align-items:center;margin-top:auto;color:#6428a5;font-size:12px;font-weight:bold;border-radius:8px;background:#f2e9ff;padding:7px 12px}.lesson-card a:hover{background:#e6d6fa}
+.empty{display:none;border:1px solid #e6d9f6;border-radius:12px;padding:24px;color:#8d75a0;background:#fff;text-align:center}
+footer{background:#f0e7fb;border-top:1px solid #decbea;margin-top:40px}footer .container{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:21px 0;flex-wrap:wrap;font-size:12px;color:#6c597c}footer strong{color:#5e2a94}
+@media(max-width:1010px){.lessons-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hero{grid-template-columns:1fr 1fr;gap:20px}}
+@media(max-width:720px){.topnav{display:none}.hero{grid-template-columns:1fr;gap:20px;padding-top:24px}.hero-visual{min-height:300px}.mock-editor{font-size:14px}.plate-stack{max-width:340px}.steps,.lessons-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.demo-grid,.method-grid{grid-template-columns:1fr}.unit-head{align-items:flex-start}.demo-box{padding:13px}.demo-pane{padding:13px}}
+@media(max-width:410px){.container{width:calc(100% - 22px)}.lessons-grid{grid-template-columns:1fr}.lesson-card{min-height:160px}.stats{gap:6px}.stat{font-size:11px}.stat b{font-size:17px}.steps{gap:8px}.step{padding:11px}.step h3{font-size:13px}.step p{font-size:11px}.brand-title{font-size:14px}.brand-sub{font-size:11px}.hero-visual{min-height:265px}.visual-caption{right:11px}.mock-output{right:-8px}.orb{min-width:81px;padding:10px 8px}.orbs{gap:8px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+</style>
+</head>
+<body>
+<header class="topbar"><div class="container inner">
+  <a href="index.html" class="brand"><span class="monogram" aria-hidden="true">ن</span><span><span class="brand-title">مختبر نسمو التفاعلي</span><span class="brand-sub">المعلوماتية 1 – ناشئين · المرحلة الأولى</span></span></a>
+  <nav class="topnav" aria-label="روابط الصفحة"><a href="#how">دليل الاستخدام</a><a href="#try">جرّب التفاعل</a><a href="#catalog">فهرس الدروس</a></nav>
+</div></header>
+<main class="container">
+<section class="hero" aria-labelledby="hero-title"><div>
+  <span class="eyebrow">✦ التعلم بالاكتشاف · مراجعة تفاعلية</span>
+  <h1 id="hero-title">المعلوماتية <em>1</em> <span style="white-space:nowrap">– ناشئين</span></h1>
+  <p class="lead">مرحبًا بك في مسار يجمع <b>31 درسًا تفاعليًا</b> في مكان واحد. استكشف الفكرة بالمجسمات، ثم المس أجزاء الكود لتتعرف على وظيفة كل جزء، وجرّب تغيير القيم لتفهم أثرها قبل اختبار المرحلة الأولى.</p>
+  <div class="hero-actions"><a class="primary" href="nsmou_hello_world_3d.html">ابدأ من الدرس الأول <span aria-hidden="true">←</span></a><a class="secondary" href="#how">تعرّف على طريقة الاستخدام ↓</a></div>
+  <div class="stats"><span class="stat"><b>31</b> صفحة مستقلة</span><span class="stat"><b>2</b> تبويبان لكل درس</span><span class="stat"><b>5</b> وحدات تعليمية</span></div>
+</div><div class="hero-visual" aria-hidden="true">
+  <span class="visual-caption">اكتشف ← المس ← افهم</span>
+  <div class="plate-stack"><div class="mock-panel"><div class="mock-toolbar"><span>main.cpp</span><span class="dots"><i></i><i></i><i></i></span></div>
+  <div class="mock-editor">#include &lt;iostream&gt;
+
+int main() {
+  std::cout &lt;&lt; "Hello!";
+  return 0;
+}</div></div><div class="mock-output"><small>نافذة الإخراج</small>&gt; Hello!</div></div>
+</div></section>
+<section id="how" aria-labelledby="how-title"><div class="section-heading"><span class="kicker">قبل أن تبدأ</span><h2 id="how-title">كيف تتعلّم من كل صفحة؟</h2><p>كل درس مصمم للمراجعة السريعة بالفهم والتجريب، وليس لقراءة نصوص طويلة أو حفظ الشيفرات دون معرفة دورها.</p></div>
+<div class="method-grid">
+  <div class="method-card"><div class="method-head"><span class="method-icon" aria-hidden="true">◈</span><h3>تبويب المفاهيم</h3></div><p>يقدم مشهدًا بصريًا تفاعليًا مناسبًا لموضوع الدرس؛ مثل مسار تنفيذ البرنامج، أو المتغيرات، أو المصفوفة، أو خطوات حل المسألة. <b>المس العناصر أو غيّر المعطيات</b> لتعرف ماذا يحدث ولماذا.</p><div class="method-details">التفاعل المتوقع: تحديد عنصر ← ظهور تفسير مختصر أو تغيّر المشهد ← مقارنة النتيجة.</div></div>
+  <div class="method-card"><div class="method-head"><span class="method-icon" aria-hidden="true">{ }</span><h3>تبويب الكود ثلاثي الأبعاد</h3></div><p>يعرض أمثلة C++ الخاصة بالدرس في أجزاء قابلة للمس. اضغط كلمة أو رمزًا مميزًا داخل الكود؛ فيبرز الجزء وتظهر وظيفته. تنقّل بين الأمثلة لاكتشاف الفرق بينها.</p><div class="method-details">التفاعل المتوقع: اختيار المثال ← لمس الجزء المميز ← قراءة الغرض من التعليمة.</div></div>
+</div>
+<div class="steps" aria-label="خطوات الاستخدام">
+  <div class="step"><span class="step-number" dir="ltr">01</span><h3>اختر درسًا</h3><p>من الفهرس أو عبر أزرار السابق والتالي داخل الدرس.</p></div>
+  <div class="step"><span class="step-number" dir="ltr">02</span><h3>استكشف المفهوم</h3><p>المس المجسمات أو جرّب تغيير القيم حسب نشاط الدرس.</p></div>
+  <div class="step"><span class="step-number" dir="ltr">03</span><h3>حلّل الكود</h3><p>انتقل للتبويب الثاني واضغط الأجزاء القابلة للتفسير.</p></div>
+  <div class="step"><span class="step-number" dir="ltr">04</span><h3>تحقق من فهمك</h3><p>توقّع النتيجة ثم جرّب، وأعد النشاط إن احتجت.</p></div>
+</div>
+</section>
+<section id="try" class="demo-box" aria-labelledby="try-title">
+<div class="demo-header"><h3 id="try-title">جرّب طريقة التفاعل هنا قبل فتح الدرس</h3><span>اضغط أو المس أحد الأجزاء البنفسجية</span></div>
+<div class="demo-grid"><div class="demo-pane"><h4>مثال من تبويب المفاهيم</h4><p>اختر أحد المفاهيم وشاهد تفسيره يظهر في الأسفل.</p>
+<div class="orbs" role="group" aria-label="مفاهيم تفاعلية">
+<button class="orb" type="button" data-concept="variable" aria-pressed="true">المتغير</button>
+<button class="orb" type="button" data-concept="condition" aria-pressed="false"><bdi dir="ltr">if</bdi> الشرط</button>
+<button class="orb" type="button" data-concept="loop" aria-pressed="false">التكرار</button></div>
+<div id="concept-info" class="demo-feedback" role="status" aria-live="polite"><strong>المتغير</strong>اسم يشير إلى قيمة يمكن استخدامها أو تغييرها أثناء تنفيذ البرنامج.</div></div>
+<div class="demo-pane"><h4>مثال من تبويب الكود</h4><p>المس الرموز الملوّنة لتتعرف على وظيفة كل جزء.</p>
+<div class="code-stage" role="group" aria-label="كود قابل للمس"><span style="color:#bca4d5">int</span> <button class="code-token" type="button" data-code="main" aria-pressed="false">main</button>() {
+  <button class="code-token" type="button" data-code="cout" aria-pressed="false">cout</button> <button class="code-token" type="button" data-code="stream" aria-pressed="false">&lt;&lt;</button> <button class="code-token" type="button" data-code="text" aria-pressed="false">"Hello!"</button>;
+  <button class="code-token" type="button" data-code="return" aria-pressed="false">return 0</button>;
+}</div>
+<div id="code-info" class="demo-feedback" role="status" aria-live="polite"><strong>اختر جزءًا من الكود</strong>عند الضغط على جزء قابل للمس، يظهر هنا تفسير مبسط لوظيفته.</div></div></div>
+</section>
+<p class="note"><strong>معلومة مهمة:</strong> تختلف المحاكاة من درس لآخر؛ فقد ترى مجسمًا يُلمس، أو شبكة تتحرك، أو عدّادًا يتغير، أو اختبارًا قصيرًا. لا يشترط أن توجد الأدوات نفسها في جميع الدروس. الأكواد تُعرض باتجاه من اليسار إلى اليمين لسهولة قراءتها، بينما الشرح بالعربية من اليمين إلى اليسار. هذه الصفحات وسيلة للفهم والمراجعة، وليست بديلًا عن بيئة ترجمة C++ فعلية.</p>
+<section id="catalog" aria-labelledby="catalog-title"><div class="section-heading"><span class="kicker">مسارك التعليمي</span><h2 id="catalog-title">فهرس الدروس الـ31</h2><p>الدروس مرتبة من الأساسيات إلى المسائل التطبيقية. يمكنك البدء من أي درس والعودة إلى الفهرس في أي وقت.</p></div>
+<div class="catalog-bar"><span class="eyebrow">جميع الصفحات مكتملة ومترابطة</span><input id="lesson-search" class="search" type="search" autocomplete="off" placeholder="ابحث باسم الدرس أو الموضوع…" aria-label="البحث في دروس المعلوماتية 1 ناشئين"></div>
+<nav class="unit-links" aria-label="انتقل إلى وحدة"><a href="#unit-1">أساسيات C++</a><a href="#unit-2">مبادئ العدّ</a><a href="#unit-3">البرمجة التنافسية</a><a href="#unit-4">مسائل تطبيقية</a><a href="#unit-5">تصحيح الأخطاء</a></nav>
+<section class="course-section" id="unit-1">
+        <div class="unit-head"><div><span class="unit-kicker">الوحدة 1 · الدروس 01–14</span><h3>أساسيات البرمجة بلغة C++</h3><p>ابدأ بفهم مكوّنات البرنامج والبيانات والشروط والحلقات والدوال.</p></div>
+        <span class="unit-count">14 دروس</span></div>
+        <div class="lessons-grid"><article class="lesson-card" data-keywords="أهلًا بالعالم Hello World تعرّف على أول برنامج ورحلة الكود إلى الإخراج.">
+        <div class="lesson-num">الدرس <b dir="ltr">01</b></div>
+        <h3>أهلًا بالعالم</h3>
+        <span class="en-name" lang="en" dir="ltr">Hello World</span>
+        <p>تعرّف على أول برنامج ورحلة الكود إلى الإخراج.</p>
+        <a href="nsmou_hello_world_3d.html" aria-label="افتح درس أهلًا بالعالم">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="بنية البرنامج Program Structure استكشف وظائف أجزاء البرنامج والأقواس والتعليقات.">
+        <div class="lesson-num">الدرس <b dir="ltr">02</b></div>
+        <h3>بنية البرنامج</h3>
+        <span class="en-name" lang="en" dir="ltr">Program Structure</span>
+        <p>استكشف وظائف أجزاء البرنامج والأقواس والتعليقات.</p>
+        <a href="nsmou_program_structure_3d.html" aria-label="افتح درس بنية البرنامج">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="المتغيرات وأنواع البيانات Variables and Types غيّر القيم وقارن بين أنواع البيانات.">
+        <div class="lesson-num">الدرس <b dir="ltr">03</b></div>
+        <h3>المتغيرات وأنواع البيانات</h3>
+        <span class="en-name" lang="en" dir="ltr">Variables and Types</span>
+        <p>غيّر القيم وقارن بين أنواع البيانات.</p>
+        <a href="nsmou_variables_and_types_3d.html" aria-label="افتح درس المتغيرات وأنواع البيانات">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="الثوابت Constants لاحظ الفرق بين قيمة متغيرة وأخرى ثابتة.">
+        <div class="lesson-num">الدرس <b dir="ltr">04</b></div>
+        <h3>الثوابت</h3>
+        <span class="en-name" lang="en" dir="ltr">Constants</span>
+        <p>لاحظ الفرق بين قيمة متغيرة وأخرى ثابتة.</p>
+        <a href="nsmou_constants_3d.html" aria-label="افتح درس الثوابت">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="العوامل Operators جرّب العمليات وتوقّع نتائج التعابير.">
+        <div class="lesson-num">الدرس <b dir="ltr">05</b></div>
+        <h3>العوامل</h3>
+        <span class="en-name" lang="en" dir="ltr">Operators</span>
+        <p>جرّب العمليات وتوقّع نتائج التعابير.</p>
+        <a href="nsmou_operators_3d.html" aria-label="افتح درس العوامل">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="الإدخال والإخراج Input / Output تتبّع انتقال الإدخال إلى المتغير ثم الإخراج.">
+        <div class="lesson-num">الدرس <b dir="ltr">06</b></div>
+        <h3>الإدخال والإخراج</h3>
+        <span class="en-name" lang="en" dir="ltr">Input / Output</span>
+        <p>تتبّع انتقال الإدخال إلى المتغير ثم الإخراج.</p>
+        <a href="nsmou_input_output_3d.html" aria-label="افتح درس الإدخال والإخراج">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="العبارات والتحكم في المسار Statements شاهد تنفيذ التعليمات وانتقال التحكم.">
+        <div class="lesson-num">الدرس <b dir="ltr">07</b></div>
+        <h3>العبارات والتحكم في المسار</h3>
+        <span class="en-name" lang="en" dir="ltr">Statements</span>
+        <p>شاهد تنفيذ التعليمات وانتقال التحكم.</p>
+        <a href="nsmou_statements_3d.html" aria-label="افتح درس العبارات والتحكم في المسار">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="عبارة if If غيّر الشرط وشاهد فرع التنفيذ المختار.">
+        <div class="lesson-num">الدرس <b dir="ltr">08</b></div>
+        <h3>عبارة if</h3>
+        <span class="en-name" lang="en" dir="ltr">If</span>
+        <p>غيّر الشرط وشاهد فرع التنفيذ المختار.</p>
+        <a href="nsmou_if_3d.html" aria-label="افتح درس عبارة if">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="حلقة while While تتبّع تكرار الحلقة واختبر شرط استمرارها.">
+        <div class="lesson-num">الدرس <b dir="ltr">09</b></div>
+        <h3>حلقة while</h3>
+        <span class="en-name" lang="en" dir="ltr">While</span>
+        <p>تتبّع تكرار الحلقة واختبر شرط استمرارها.</p>
+        <a href="nsmou_while_3d.html" aria-label="افتح درس حلقة while">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="حلقة for For استكشف التهيئة والشرط والتحديث في الحلقة.">
+        <div class="lesson-num">الدرس <b dir="ltr">10</b></div>
+        <h3>حلقة for</h3>
+        <span class="en-name" lang="en" dir="ltr">For</span>
+        <p>استكشف التهيئة والشرط والتحديث في الحلقة.</p>
+        <a href="nsmou_for_3d.html" aria-label="افتح درس حلقة for">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="الدوال Functions تتبّع استدعاء الدالة والقيم التي تعيدها.">
+        <div class="lesson-num">الدرس <b dir="ltr">11</b></div>
+        <h3>الدوال</h3>
+        <span class="en-name" lang="en" dir="ltr">Functions</span>
+        <p>تتبّع استدعاء الدالة والقيم التي تعيدها.</p>
+        <a href="nsmou_functions_3d.html" aria-label="افتح درس الدوال">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="مرئية الأسماء Name Visibility اكتشف نطاق المتغير وأماكن ظهوره.">
+        <div class="lesson-num">الدرس <b dir="ltr">12</b></div>
+        <h3>مرئية الأسماء</h3>
+        <span class="en-name" lang="en" dir="ltr">Name Visibility</span>
+        <p>اكتشف نطاق المتغير وأماكن ظهوره.</p>
+        <a href="nsmou_name_visibility_3d.html" aria-label="افتح درس مرئية الأسماء">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="المصفوفات Arrays جرّب الفهارس والخلايا ومجموع المصفوفة.">
+        <div class="lesson-num">الدرس <b dir="ltr">13</b></div>
+        <h3>المصفوفات</h3>
+        <span class="en-name" lang="en" dir="ltr">Arrays</span>
+        <p>جرّب الفهارس والخلايا ومجموع المصفوفة.</p>
+        <a href="nsmou_arrays_3d.html" aria-label="افتح درس المصفوفات">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="المتجهات Vectors أضف عناصر المتجه واحذفها ولاحظ تغير حجمه.">
+        <div class="lesson-num">الدرس <b dir="ltr">14</b></div>
+        <h3>المتجهات</h3>
+        <span class="en-name" lang="en" dir="ltr">Vectors</span>
+        <p>أضف عناصر المتجه واحذفها ولاحظ تغير حجمه.</p>
+        <a href="nsmou_vectors_3d.html" aria-label="افتح درس المتجهات">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article></div>
+      </section><section class="course-section" id="unit-2">
+        <div class="unit-head"><div><span class="unit-kicker">الوحدة 2 · الدروس 15–17</span><h3>مبادئ العدّ</h3><p>استكشف قاعدتي الجمع والضرب والأمثلة والمسائل.</p></div>
+        <span class="unit-count">3 دروس</span></div>
+        <div class="lessons-grid"><article class="lesson-card" data-keywords="قاعدتا الجمع والضرب Sum and Product Rule استكشف متى تجمع الخيارات ومتى تضربها.">
+        <div class="lesson-num">الدرس <b dir="ltr">15</b></div>
+        <h3>قاعدتا الجمع والضرب</h3>
+        <span class="en-name" lang="en" dir="ltr">Sum and Product Rule</span>
+        <p>استكشف متى تجمع الخيارات ومتى تضربها.</p>
+        <a href="nsmou_sum_product_rule_3d.html" aria-label="افتح درس قاعدتا الجمع والضرب">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="أمثلة محلولة Worked Examples افحص حلولًا مكتملة خطوة بخطوة.">
+        <div class="lesson-num">الدرس <b dir="ltr">16</b></div>
+        <h3>أمثلة محلولة</h3>
+        <span class="en-name" lang="en" dir="ltr">Worked Examples</span>
+        <p>افحص حلولًا مكتملة خطوة بخطوة.</p>
+        <a href="nsmou_worked_examples_3d.html" aria-label="افتح درس أمثلة محلولة">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="مسائل Problems طبّق مبادئ العدّ على مسائل قصيرة.">
+        <div class="lesson-num">الدرس <b dir="ltr">17</b></div>
+        <h3>مسائل</h3>
+        <span class="en-name" lang="en" dir="ltr">Problems</span>
+        <p>طبّق مبادئ العدّ على مسائل قصيرة.</p>
+        <a href="nsmou_counting_problems_3d.html" aria-label="افتح درس مسائل">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article></div>
+      </section><section class="course-section" id="unit-3">
+        <div class="unit-head"><div><span class="unit-kicker">الوحدة 3 · الدروس 18–19</span><h3>مقدمة البرمجة التنافسية</h3><p>تعرّف على المسابقات وتجزئة المسائل إلى مسائل فرعية.</p></div>
+        <span class="unit-count">2 دروس</span></div>
+        <div class="lessons-grid"><article class="lesson-card" data-keywords="المسابقات والمنصات Contests and Platforms اكتشف كيف تقيّم منصات البرمجة الإجابة.">
+        <div class="lesson-num">الدرس <b dir="ltr">18</b></div>
+        <h3>المسابقات والمنصات</h3>
+        <span class="en-name" lang="en" dir="ltr">Contests and Platforms</span>
+        <p>اكتشف كيف تقيّم منصات البرمجة الإجابة.</p>
+        <a href="nsmou_contests_platforms_3d.html" aria-label="افتح درس المسابقات والمنصات">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="المسائل ذات المسائل الفرعية Problems with Subproblems قارن بين حلول المسألة وفق قيودها.">
+        <div class="lesson-num">الدرس <b dir="ltr">19</b></div>
+        <h3>المسائل ذات المسائل الفرعية</h3>
+        <span class="en-name" lang="en" dir="ltr">Problems with Subproblems</span>
+        <p>قارن بين حلول المسألة وفق قيودها.</p>
+        <a href="nsmou_subproblems_3d.html" aria-label="افتح درس المسائل ذات المسائل الفرعية">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article></div>
+      </section><section class="course-section" id="unit-4">
+        <div class="unit-head"><div><span class="unit-kicker">الوحدة 4 · الدروس 20–30</span><h3>مسائل تطبيقية</h3><p>حوّل معطيات المسألة إلى خطوات حل وشاهد كيف تتغير النتيجة.</p></div>
+        <span class="unit-count">11 دروس</span></div>
+        <div class="lessons-grid"><article class="lesson-card" data-keywords="Domino Piling Domino Piling ركّب قطع الدومينو فوق اللوحة.">
+        <div class="lesson-num">الدرس <b dir="ltr">20</b></div>
+        <h3>Domino Piling</h3>
+        
+        <p>ركّب قطع الدومينو فوق اللوحة.</p>
+        <a href="nsmou_domino_piling_3d.html" aria-label="افتح درس Domino Piling">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="Beautiful Matrix Beautiful Matrix حرّك الرقم نحو مركز المصفوفة.">
+        <div class="lesson-num">الدرس <b dir="ltr">21</b></div>
+        <h3>Beautiful Matrix</h3>
+        
+        <p>حرّك الرقم نحو مركز المصفوفة.</p>
+        <a href="nsmou_beautiful_matrix_3d.html" aria-label="افتح درس Beautiful Matrix">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="Theatre Square Theatre Square غطِّ الساحة بالبلاطات واحسب العدد المناسب.">
+        <div class="lesson-num">الدرس <b dir="ltr">22</b></div>
+        <h3>Theatre Square</h3>
+        
+        <p>غطِّ الساحة بالبلاطات واحسب العدد المناسب.</p>
+        <a href="nsmou_theatre_square_3d.html" aria-label="افتح درس Theatre Square">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="Weird Algorithm Weird Algorithm تابع خطوات المتتالية وتغير العدد.">
+        <div class="lesson-num">الدرس <b dir="ltr">23</b></div>
+        <h3>Weird Algorithm</h3>
+        
+        <p>تابع خطوات المتتالية وتغير العدد.</p>
+        <a href="nsmou_weird_algorithm_3d.html" aria-label="افتح درس Weird Algorithm">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="Team Team غيّر قرارات أعضاء الفريق واحسب الحصيلة.">
+        <div class="lesson-num">الدرس <b dir="ltr">24</b></div>
+        <h3>Team</h3>
+        
+        <p>غيّر قرارات أعضاء الفريق واحسب الحصيلة.</p>
+        <a href="nsmou_team_3d.html" aria-label="افتح درس Team">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="Dislike of Threes Dislike of Threes رشّح الأعداد وابحث عن ترتيبها.">
+        <div class="lesson-num">الدرس <b dir="ltr">25</b></div>
+        <h3>Dislike of Threes</h3>
+        
+        <p>رشّح الأعداد وابحث عن ترتيبها.</p>
+        <a href="nsmou_dislike_of_threes_3d.html" aria-label="افتح درس Dislike of Threes">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="Beautiful Year Beautiful Year افحص تكرار الأرقام داخل السنوات.">
+        <div class="lesson-num">الدرس <b dir="ltr">26</b></div>
+        <h3>Beautiful Year</h3>
+        
+        <p>افحص تكرار الأرقام داخل السنوات.</p>
+        <a href="nsmou_beautiful_year_3d.html" aria-label="افتح درس Beautiful Year">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="Next Round Next Round غيّر الدرجات والمركز واحسب المتأهلين.">
+        <div class="lesson-num">الدرس <b dir="ltr">27</b></div>
+        <h3>Next Round</h3>
+        
+        <p>غيّر الدرجات والمركز واحسب المتأهلين.</p>
+        <a href="nsmou_next_round_3d.html" aria-label="افتح درس Next Round">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="Holiday of Equality Holiday of Equality وازن القيم بحساب الزيادات المطلوبة.">
+        <div class="lesson-num">الدرس <b dir="ltr">28</b></div>
+        <h3>Holiday of Equality</h3>
+        
+        <p>وازن القيم بحساب الزيادات المطلوبة.</p>
+        <a href="nsmou_holiday_equality_3d.html" aria-label="افتح درس Holiday of Equality">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="Equator Equator تتبّع المجموع حتى تصل إلى نقطة التوازن.">
+        <div class="lesson-num">الدرس <b dir="ltr">29</b></div>
+        <h3>Equator</h3>
+        
+        <p>تتبّع المجموع حتى تصل إلى نقطة التوازن.</p>
+        <a href="nsmou_equator_3d.html" aria-label="افتح درس Equator">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article><article class="lesson-card" data-keywords="Static Range Sum Queries Static Range Sum Queries حدد فترة واحسب مجموعها التراكمي.">
+        <div class="lesson-num">الدرس <b dir="ltr">30</b></div>
+        <h3>Static Range Sum Queries</h3>
+        
+        <p>حدد فترة واحسب مجموعها التراكمي.</p>
+        <a href="nsmou_static_range_sum_queries_3d.html" aria-label="افتح درس Static Range Sum Queries">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article></div>
+      </section><section class="course-section" id="unit-5">
+        <div class="unit-head"><div><span class="unit-kicker">الوحدة 5 · الدروس 31</span><h3>تصحيح الأخطاء</h3><p>لاحظ أثر الخطأ، وجرّب تعديله ثم افحص التنفيذ.</p></div>
+        <span class="unit-count">1 درس</span></div>
+        <div class="lessons-grid"><article class="lesson-card" data-keywords="تصحيح الأخطاء Debugging اكتشف الخلل وعدّل السبب ثم لاحظ النتيجة.">
+        <div class="lesson-num">الدرس <b dir="ltr">31</b></div>
+        <h3>تصحيح الأخطاء</h3>
+        <span class="en-name" lang="en" dir="ltr">Debugging</span>
+        <p>اكتشف الخلل وعدّل السبب ثم لاحظ النتيجة.</p>
+        <a href="nsmou_debugging_3d.html" aria-label="افتح درس تصحيح الأخطاء">افتح الدرس <span aria-hidden="true">←</span></a>
+      </article></div>
+      </section>
+<div id="no-results" class="empty" role="status">لم نجد درسًا مطابقًا لعبارة البحث. جرّب كلمة أخرى.</div>
+</section></main>
+<footer><div class="container"><strong>فكرة وتصميم محمد مجممي</strong><span>محتوى تعليمي تفاعلي مستند إلى موضوعات نسمو، وليس الموقع الرسمي للبرنامج.</span></div></footer>
+<script>
+(()=>{'use strict';
+const concepts={variable:['المتغير','اسم يشير إلى قيمة يمكن استخدامها أو تغييرها أثناء تنفيذ البرنامج.'],condition:['عبارة if','تتحقق من شرط منطقي لتحديد ما إذا كان تنفيذ مجموعة تعليمات سيحدث.'],loop:['الحلقة','تسمح بتكرار تعليمات مع تحقق شرط الاستمرار أو حتى نهاية عدد محدد من التكرارات.']};
+const codes={main:['main()','الدالة الرئيسية التي يبدأ عندها تنفيذ البرنامج.'],cout:['cout','يستخدم لإرسال البيانات إلى الإخراج القياسي، وغالبًا تظهر على الشاشة.'],stream:['<<','عامل إدراج البيانات في مجرى الإخراج.'],text:['"Hello!"','سلسلة نصية؛ تظهر حروفها في الإخراج عند تنفيذ التعليمة.'],return:['return 0','تنهي الدالة الرئيسية وتعيد القيمة صفر عادةً للدلالة على الإنهاء الناجح.']};
+for(const b of document.querySelectorAll('[data-concept]')) b.addEventListener('click',()=>{document.querySelectorAll('[data-concept]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));const [head,description]=concepts[b.dataset.concept];const box=document.getElementById('concept-info');box.replaceChildren();const title=document.createElement('strong');title.textContent=head;box.append(title,document.createTextNode(description));});
+for(const b of document.querySelectorAll('[data-code]')) b.addEventListener('click',()=>{document.querySelectorAll('[data-code]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));const [head,description]=codes[b.dataset.code];const box=document.getElementById('code-info');box.replaceChildren();const title=document.createElement('strong');title.textContent=head;title.dir='ltr';title.style.textAlign='right';box.append(title,document.createTextNode(description));});
+const input=document.getElementById('lesson-search');input.addEventListener('input',()=>{const q=input.value.trim().toLocaleLowerCase('ar');let visible=0;for(const unit of document.querySelectorAll('.course-section')){let inUnit=0;for(const lesson of unit.querySelectorAll('.lesson-card')){const match=lesson.dataset.keywords.toLocaleLowerCase('ar').includes(q);lesson.hidden=!match;if(match){visible++;inUnit++}}unit.hidden=inUnit===0}document.getElementById('no-results').style.display=visible?'none':'block';});
+})();
+</script>
+</body></html>
